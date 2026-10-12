@@ -1,0 +1,58 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+.conda/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# --- Logs and temporary files ---
+*.log
+logs/
+tmp/
+*.tmp
+*.bak
+
+# --- Experiment outputs (keep folder, ignore generated files) ---
+results/*
+!results/.gitkeep
+
+# --- Data: only the synthetic sample is tracked ---
+# Real student data must NEVER be committed (privacy / ethics)
+data/raw/*
+!data/raw/.gitkeep
+*.xlsx
+*.xls
+*.sav
+*.parquet
+*.pkl
+
+# --- Secrets ---
+.env
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- LaTeX build files ---
+*.aux
+*.out
+*.toc
+*.synctex.gz
