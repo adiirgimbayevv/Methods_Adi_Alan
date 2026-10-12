@@ -1,0 +1,202 @@
+{
+  "smoke_test_mode": true,
+  "guardrails": {
+    "n": 10,
+    "sample_size_ok": false,
+    "max_missing_share": 0.0,
+    "missing_ok": true,
+    "vif": {
+      "gpa": 67.8365380651226,
+      "prior_exp_years": 33.66967075915849,
+      "year_of_study": 7.792643408999079,
+      "study_hours_week": 29.717731016911404,
+      "task_time_min": 3.4972501422340194,
+      "task_difficulty": 10.666961304100461
+    },
+    "vif_ok": false,
+    "cronbach_alpha": null,
+    "cronbach_ok": null,
+    "anonymized_ok": true
+  },
+  "primary_rq3": {
+    "beta": 16.478835978836088,
+    "ci_low": 13.189612055243451,
+    "ci_high": 19.768059902428725,
+    "p_two_sided": 0.009999895528033965,
+    "p_reported": 0.004999947764016983,
+    "alternative": "greater",
+    "r2": 0.9999648097474184,
+    "r2_null": 0.857364567547335,
+    "delta_r2": 0.14260024220008338,
+    "n": 7,
+    "df_resid": 1,
+    "delta_r2_F": 4052.265378589726,
+    "delta_r2_p": 0.009999895528033789,
+    "cohens_d_raw": 2.942829059294489,
+    "controls_used": [
+      "gpa",
+      "prior_exp_years",
+      "year_of_study",
+      "study_hours_week"
+    ],
+    "supported": null
+  },
+  "secondary": {
+    "rq1": {
+      "beta": 13.992979516131733,
+      "ci_low": -10.30991865447577,
+      "ci_high": 38.29587768673923,
+      "p_two_sided": 0.13154273778677816,
+      "p_reported": 0.13154273778677816,
+      "alternative": "two-sided",
+      "r2": 0.972325934167573,
+      "r2_null": 0.8874040097862529,
+      "delta_r2": 0.08492192438132007,
+      "n": 10,
+      "df_resid": 2,
+      "delta_r2_F": 6.137292936682487,
+      "delta_r2_p": 0.1315427377867786,
+      "controls_used": [
+        "gpa",
+        "prior_exp_years",
+        "year_of_study",
+        "study_hours_week",
+        "task_time_min",
+        "task_difficulty"
+      ]
+    },
+    "rq2": {
+      "beta": 0.09661996739047163,
+      "ci_low": -0.23055230694263518,
+      "ci_high": 0.42379224172357843,
+      "p_two_sided": 0.33165738913663934,
+      "p_reported": 0.33165738913663934,
+      "alternative": "two-sided",
+      "r2": 0.9810024962799513,
+      "r2_null": 0.9656662201205626,
+      "delta_r2": 0.015336276159388706,
+      "n": 10,
+      "df_resid": 2,
+      "delta_r2_F": 1.6145569844740975,
+      "delta_r2_p": 0.3316573891366386,
+      "spearman_rho": -0.018518871342930895,
+      "spearman_p": 0.9595038589371199,
+      "controls_used": [
+        "gpa",
+        "prior_exp_years",
+        "year_of_study",
+        "study_hours_week",
+        "task_time_min",
+        "task_difficulty"
+      ]
+    },
+    "rq3b": {
+      "beta": -6.552910052910448,
+      "ci_low": -76.94230201778986,
+      "ci_high": 63.83648191196896,
+      "p_two_sided": 0.44678719492744146,
+      "p_reported": 0.7766064025362793,
+      "alternative": "greater",
+      "r2": 0.9149203376731465,
+      "r2_null": 0.7958752603631876,
+      "delta_r2": 0.11904507730995895,
+      "n": 7,
+      "df_resid": 1,
+      "delta_r2_F": 1.399218967896456,
+      "delta_r2_p": 0.4467871949274522,
+      "controls_used": [
+        "gpa",
+        "prior_exp_years",
+        "year_of_study",
+        "study_hours_week"
+      ]
+    },
+    "holm": {
+      "RQ1": {
+        "p_raw": 0.13154273778677816,
+        "p_holm": 0.3946282133603345,
+        "reject_h0": false
+      },
+      "RQ2": {
+        "p_raw": 0.33165738913663934,
+        "p_holm": 0.6633147782732787,
+        "reject_h0": false
+      },
+      "RQ3b": {
+        "p_raw": 0.7766064025362793,
+        "p_holm": 0.7766064025362793,
+        "reject_h0": false
+      }
+    }
+  },
+  "descriptives": {
+    "overall": {
+      "ct_score": {
+        "count": 10.0,
+        "mean": 67.5,
+        "std": 11.394,
+        "min": 50.0,
+        "25%": 59.0,
+        "50%": 68.0,
+        "75%": 76.25,
+        "max": 84.0
+      },
+      "assignment_score": {
+        "count": 10.0,
+        "mean": 79.0,
+        "std": 7.86,
+        "min": 64.0,
+        "25%": 73.75,
+        "50%": 81.0,
+        "75%": 84.75,
+        "max": 88.0
+      },
+      "practical_score": {
+        "count": 10.0,
+        "mean": 71.0,
+        "std": 8.819,
+        "min": 58.0,
+        "25%": 66.0,
+        "50%": 71.0,
+        "75%": 77.25,
+        "max": 85.0
+      },
+      "final_grade": {
+        "count": 10.0,
+        "mean": 75.1,
+        "std": 8.062,
+        "min": 61.0,
+        "25%": 68.75,
+        "50%": 76.5,
+        "75%": 80.0,
+        "max": 87.0
+      }
+    },
+    "by_mode": {
+      "explanation": {
+        "ct_score": 78.25,
+        "assignment_score": 81.25,
+        "practical_score": 77.0,
+        "final_grade": 80.0
+      },
+      "none": {
+        "ct_score": 62.667,
+        "assignment_score": 72.0,
+        "practical_score": 68.0,
+        "final_grade": 69.667
+      },
+      "solution": {
+        "ct_score": 58.0,
+        "assignment_score": 83.0,
+        "practical_score": 66.0,
+        "final_grade": 74.0
+      }
+    },
+    "group_sizes": {
+      "explanation": 4,
+      "none": 3,
+      "solution": 3
+    }
+  },
+  "runtime_seconds": 0.127
+}

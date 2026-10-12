@@ -1,0 +1,24 @@
+17:10:58 | INFO    | Project: genai-programming-critical-thinking v0.1.0
+17:10:58 | INFO    | Seed=42 | data=data/sample/sample.csv
+17:10:58 | INFO    | Loaded 10 rows x 15 columns
+17:10:58 | INFO    | --- Guardrails ---
+17:10:58 | INFO    | sample_size_ok   FAIL
+17:10:58 | INFO    | missing_ok       PASS
+17:10:58 | INFO    | vif_ok           FAIL
+17:10:58 | INFO    | cronbach_ok      n/a
+17:10:58 | INFO    | anonymized_ok    PASS
+17:10:58 | WARNING | n=10 < 100: SMOKE-TEST MODE. The pipeline runs, but results are not interpretable.
+17:10:58 | INFO    | --- Primary hypothesis (RQ3): explanation vs solution -> critical thinking ---
+17:10:58 | WARNING | Small sample (n=7): using 4 of 6 controls (gpa, prior_exp_years, year_of_study, study_hours_week). Results are NOT interpretable.
+17:10:58 | INFO    | beta=+16.479 [+13.19, +19.77], p=0.005 (greater), dR2=0.143, n=7
+17:10:58 | INFO    | Cohen's d (raw)=2.94 | H1 supported: n/a (smoke test)
+17:10:58 | INFO    | --- Secondary hypotheses ---
+17:10:58 | WARNING | Small sample (n=7): using 4 of 6 controls (gpa, prior_exp_years, year_of_study, study_hours_week). Results are NOT interpretable.
+17:10:58 | INFO    | RQ1  AI use -> CT:             beta=+13.993 [-10.31, +38.30], p=0.132 (two-sided), dR2=0.085, n=10
+17:10:58 | INFO    | RQ2  intensity -> final grade: beta=+0.097 [-0.23, +0.42], p=0.332 (two-sided), dR2=0.015, n=10 | rho=-0.02
+17:10:58 | INFO    | RQ3b mode -> assignment:       beta=-6.553 [-76.94, +63.84], p=0.777 (greater), dR2=0.119, n=7
+17:10:58 | INFO    | Holm RQ1   p_raw=0.132 p_adj=0.395 reject_H0=False
+17:10:58 | INFO    | Holm RQ2   p_raw=0.332 p_adj=0.663 reject_H0=False
+17:10:58 | INFO    | Holm RQ3b  p_raw=0.777 p_adj=0.777 reject_H0=False
+17:10:58 | INFO    | Saved metrics -> results/metrics.json
+17:10:58 | INFO    | Done in 0.13s
