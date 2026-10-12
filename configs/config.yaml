@@ -42,7 +42,7 @@ variables:
   ct_items: []                          # optional item-level columns of the CT test (enables Cronbach's alpha)
 
 instrument:
-  critical_thinking_test: "Sosu (CTDS)"   # fill in once chosen
+  critical_thinking_test: "TBD (validated test or rubric)"   # fill in once chosen
   ct_score_range: [0, 100]
 
 analysis:

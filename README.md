@@ -15,7 +15,7 @@ related to **critical thinking** and **academic performance** among undergraduat
 
 This repository contains the reproducible analysis pipeline: a configurable, containerized script that reads a
 student-level table, checks data-quality guardrails, tests the study hypotheses with covariate adjustment and writes a
-log and a metrics file. It currently runs on a **synthetic 10-row sample**; real data collection follows in Week 7.
+log and a metrics file. It currently runs on a **synthetic 10-row sample**; real data collection follows later.
 
 ### Research questions
 
@@ -30,7 +30,7 @@ log and a metrics file. It currently runs on a **synthetic 10-row sample**; real
 - **H0:** After controlling for covariates, there is no difference in critical thinking score between students who mainly use GenAI for explanations/debugging feedback and students who mainly use it for full-solution generation (β<sub>mode</sub> = 0).
 - **H1:** After controlling for covariates, students who mainly use GenAI for explanations/debugging feedback have a higher critical thinking score (β<sub>mode</sub> > 0).
 
-The full methodology (variables, metrics, baseline) is in [`docs/Task2_Methodology_Card.pdf`](docs/Task2_Methodology_Card.pdf).
+The critical thinking outcome is measured with the Sosu Critical Thinking Disposition Scale (self-report). Results show associations, not causal effects. The full methodology (variables, metrics, baseline, limitations) is in [`docs/Task2_Methodology_Card.pdf`](docs/Task2_Methodology_Card.pdf).
 
 ## Repository structure
 
@@ -101,9 +101,9 @@ Optional flags: `--config <path>` selects another config file; `--strict` return
 
 | Role | Metric | Details |
 |------|--------|---------|
-| **Primary** | Adjusted β<sub>mode</sub> on critical thinking score | OLS with controls; 95% CI, one-sided p (α = 0.05), Cohen's d |
+| **Primary** | Adjusted β<sub>mode</sub> on critical thinking disposition score (Sosu CTDS, self-report) | OLS with controls; 95% CI, one-sided p (α = 0.05), Cohen's d |
 | Secondary | β for assignment score (RQ3b), β for AI use (RQ1), Spearman ρ and β for intensity vs. final grade (RQ2) | Holm correction for multiple tests |
-| Guardrail | Cronbach's α ≥ 0.70 | Needs item-level columns (`variables.ct_items`) |
+| Guardrail | Cronbach's α ≥ 0.70 for the CTDS | Needs item-level columns (`variables.ct_items`) |
 | Guardrail | Missing data < 10% per variable; VIF < 5 | Checked automatically |
 | Guardrail | n ≥ about 100 | A priori power analysis: f² = 0.15, α = 0.05, power = 0.80 |
 | Guardrail | Anonymized data | No name, e-mail or phone columns allowed |
