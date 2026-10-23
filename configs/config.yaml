@@ -1,0 +1,82 @@
+# Experiment configuration for:
+# "The Effect of Generative AI-Assisted Programming on Critical Thinking
+#  and Academic Performance of Undergraduate IT Students"
+# All analysis parameters live here; src/main.py reads this file.
+
+project:
+  name: genai-programming-critical-thinking
+  authors: ["Adi Irgimbayev", "Alan Shmyrin"]
+  version: "0.1.0"
+
+reproducibility:
+  random_seed: 42            # fixed seed for bootstrap / any resampling
+  timeout_seconds: 300       # abort the run if it hangs
+
+paths:
+  data_file: data/sample/sample.csv   # swap to a private file for real data (never commit it)
+  output_dir: results
+  log_file: results/run.log
+  metrics_file: results/metrics.json
+
+# Column names expected in the data file (match the variable matrix in the methodology card)
+variables:
+  id: id
+  independent:
+    ai_used: used_ai                      # RQ1: 0 = no AI, 1 = used AI
+    ai_intensity_sessions: ai_sessions_per_week   # RQ2
+    ai_intensity_share: ai_share_pct      # RQ2: share of AI-assisted code steps, 0-100
+    ai_mode: ai_mode                      # RQ3: "explanation" | "solution"
+  dependent:
+    critical_thinking: ct_score           # primary outcome
+    assignment: assignment_score
+    practical: practical_score
+    final_grade: final_grade
+  controls:
+    - gpa
+    - prior_exp_years
+    - year_of_study
+    - study_hours_week
+    - task_time_min
+    - task_difficulty
+
+  ct_items: []                          # optional item-level columns of the CT test (enables Cronbach's alpha)
+
+instrument:
+  critical_thinking_test: "TBD (validated test or rubric)"   # fill in once chosen
+  ct_score_range: [0, 100]
+
+analysis:
+  alpha: 0.05
+  alternative_primary: greater          # H1 for RQ3: beta_mode > 0 (one-sided)
+  confidence_level: 0.95
+  multiple_testing_correction: holm
+  primary_model: ols
+  reference_mode: solution              # baseline group for the mode comparison
+  null_model_controls_only: true        # report delta R^2 vs controls-only model
+
+# Guardrail thresholds from the methodology card
+guardrails:
+  min_cronbach_alpha: 0.70
+  max_missing_share: 0.10
+  max_vif: 5.0
+  min_sample_size: 100                  # a priori power analysis (f2=0.15, power=0.80)
+  require_anonymized: true
+
+# Workload parameters for src/collector.py (Week 7: data collection testbed)
+benchmark:
+  seed: 42
+  warmup_runs: 10            # cold-start runs: logged with phase="warmup", excluded from metrics
+  measured_runs: 100         # working runs used for the final statistics
+  cohort_size: 100           # synthetic students per run
+  edge_case_share: 0.10      # share of measured runs that use a deliberately broken dataset
+  edge_cases: [missing_values, constant_column, empty_group, extreme_outliers, tiny_sample]
+  share_ai_users: 0.70
+  share_explanation_among_users: 0.50
+  output_jsonl: data/raw/test_run.jsonl
+  summary_file: results/benchmark_summary.json
+  distributions:             # normal = symmetric traits, pareto = heavy-tailed usage counts
+    gpa:                  {dist: normal, mean: 3.2, sd: 0.4, min: 2.0, max: 4.0}
+    study_hours_week:     {dist: normal, mean: 9.0, sd: 3.0, min: 2.0, max: 25.0}
+    task_time_min:        {dist: normal, mean: 70.0, sd: 20.0, min: 15.0, max: 180.0}
+    ai_sessions_per_week: {dist: pareto, shape: 2.0, scale: 3.0, min: 1, max: 30}
+    prior_exp_years:      {dist: pareto, shape: 3.0, scale: 2.0, min: 0.0, max: 10.0}
