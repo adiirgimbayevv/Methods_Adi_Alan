@@ -28,10 +28,13 @@ tmp/
 results/*
 !results/.gitkeep
 
-# --- Data: only the synthetic sample is tracked ---
+# --- Data: only synthetic/processed data is tracked ---
 # Real student data must NEVER be committed (privacy / ethics)
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/test_run.jsonl
+# processed results are tracked (no PII)
+# data/processed/ is fully committed
 *.xlsx
 *.xls
 *.sav

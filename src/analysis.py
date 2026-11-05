@@ -39,6 +39,9 @@ def compute_vif(df: pd.DataFrame, cols: list[str]) -> dict[str, float]:
     return {c: float(variance_inflation_factor(X.values, i + 1)) for i, c in enumerate(cols)}
 
 
+
+
+
 def check_guardrails(df: pd.DataFrame, cfg: dict) -> dict:
     g, v = cfg["guardrails"], cfg["variables"]
     used = (

@@ -61,3 +61,18 @@ guardrails:
   max_vif: 5.0
   min_sample_size: 100                  # a priori power analysis (f2=0.15, power=0.80)
   require_anonymized: true
+  max_error_rate: 0.05                  # W7/W8 benchmark guardrail: HTTP/runtime error rate < 5%
+
+# W7-W9 Benchmark & Workload Parameters (SS7 / Task 3)
+benchmark:
+  raw_log_path: data/raw/test_run.jsonl
+  processed_summary_path: data/processed/metrics_summary.csv
+  figures_dir: reports/figures
+  warmup_runs_per_level: 25             # discarded during ingestion to eliminate Warm-up Bias
+  benchmark_runs_per_level: 100         # active measurement runs per condition (phase == "benchmark")
+  load_levels_rps: [10, 25, 50, 100, 200, 400]
+  variants:
+    - Baseline (Solution-Gen)           # Baseline: Full-solution generation / uncached OLS evaluation
+    - Proposed (Explanation-Guided)     # Proposed: Guided explanation scaffolding / vectorized evaluation
+  bootstrap_resamples: 1000
+  iqr_multiplier: 1.5                   # non-destructive outlier detection threshold (1.5x IQR)
