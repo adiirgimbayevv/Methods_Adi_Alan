@@ -63,16 +63,17 @@ guardrails:
   require_anonymized: true
   max_error_rate: 0.05                  # W7/W8 benchmark guardrail: HTTP/runtime error rate < 5%
 
-# W7-W9 Benchmark & Workload Parameters (SS7 / Task 3)
+# W7-W9 local aggregation benchmark over the public ProgFeed data (Task 3)
 benchmark:
+  source_data_path: data/raw/progfeed/all_submissions_consolidated.csv
   raw_log_path: data/raw/test_run.jsonl
   processed_summary_path: data/processed/metrics_summary.csv
   figures_dir: reports/figures
-  warmup_runs_per_level: 25             # discarded during ingestion to eliminate Warm-up Bias
-  benchmark_runs_per_level: 100         # active measurement runs per condition (phase == "benchmark")
-  load_levels_rps: [10, 25, 50, 100, 200, 400]
+  warmup_runs_per_level: 5
+  benchmark_runs_per_level: 30
+  load_levels_rows: [100, 250, 500, 1000, 2500, 5000]
   variants:
-    - Baseline (Solution-Gen)           # Baseline: Full-solution generation / uncached OLS evaluation
-    - Proposed (Explanation-Guided)     # Proposed: Guided explanation scaffolding / vectorized evaluation
-  bootstrap_resamples: 1000
+    - Baseline (Python row loop)
+    - Proposed (pandas groupby)
+  bootstrap_resamples: 2000
   iqr_multiplier: 1.5                   # non-destructive outlier detection threshold (1.5x IQR)

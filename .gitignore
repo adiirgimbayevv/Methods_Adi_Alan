@@ -28,8 +28,8 @@ tmp/
 results/*
 !results/.gitkeep
 
-# --- Data: only synthetic/processed data is tracked ---
-# Real student data must NEVER be committed (privacy / ethics)
+# --- Data: keep source student data local; track small benchmark logs and summaries ---
+# Public student-level data stays outside Git even though it is de-identified.
 data/raw/*
 !data/raw/.gitkeep
 !data/raw/test_run.jsonl

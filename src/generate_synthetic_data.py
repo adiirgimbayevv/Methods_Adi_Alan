@@ -1,4 +1,4 @@
-"""Wrapper to regenerate synthetic benchmark logs (delegates to src/benchmark.py)."""
+"""Legacy wrapper name; delegates to the measured ProgFeed aggregation benchmark."""
 from pathlib import Path
 import sys
 
